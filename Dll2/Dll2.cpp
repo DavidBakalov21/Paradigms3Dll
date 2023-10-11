@@ -17,7 +17,7 @@ DLL2_API std::string Encrypt(std::string str, int key) {
             if (std::isupper(encrypted[i]) == true) {
                 base = 'A';
             }
-            encrypted[i] = static_cast<char>(base + (encrypted[i] - base + key) % 26);
+            encrypted[i] = static_cast<char>(base + (encrypted[i] - base + (key % 26)) % 26);
         }
     }
 
@@ -35,7 +35,7 @@ DLL2_API std::string Decrypt(std::string str, int key) {
             if (std::isupper(decrypted[i]) == true) {
                 base = 'A';
             }
-            decrypted[i] = static_cast<char>(base + (decrypted[i] - base - key + 26) % 26);
+            decrypted[i] = static_cast<char>(base + (decrypted[i] - base - (key % 26) + 26) % 26);
         }
     }
 
